@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ココT SNS戦略方針（案）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f9f9f7; color: #1a1a18; }
+.deck { display: flex; flex-direction: column; gap: 0; max-width: 860px; margin: 0 auto; background: #fff; }
+
+.slide { padding: 28px 32px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.slide:last-child { border-bottom: none; }
+.slide-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.slide-num { font-size: 11px; font-weight: 500; color: #888; background: #f5f5f3; border: 1px solid #e0ded8; border-radius: 20px; padding: 2px 10px; white-space: nowrap; }
+.slide-title { font-size: 17px; font-weight: 500; color: #1a1a18; }
+.tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; margin-left: auto; white-space: nowrap; }
+.tag-market { background: #E1F5EE; color: #0F6E56; }
+.tag-sns { background: #EEEDFE; color: #3C3489; }
+.tag-kpi { background: #FAEEDA; color: #854F0B; }
+.tag-intro { background: #EAF3DE; color: #3B6D11; }
+.tag-persona { background: #FAECE7; color: #993C1D; }
+.tag-goods { background: #E6F1FB; color: #185FA5; }
+.tag-new { background: #F7C1C1; color: #A32D2D; font-size: 9px; padding: 1px 6px; border-radius: 6px; }
+
+.accent-bar { height: 3px; border-radius: 2px; margin-bottom: 16px; }
+.bar-teal { background: linear-gradient(90deg, #1D9E75, #5DCAA5); }
+.bar-purple { background: linear-gradient(90deg, #7F77DD, #AFA9EC); }
+.bar-amber { background: linear-gradient(90deg, #BA7517, #EF9F27); }
+.bar-coral { background: linear-gradient(90deg, #D85A30, #F0997B); }
+.bar-blue { background: linear-gradient(90deg, #185FA5, #378ADD); }
+
+.col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.col3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+.card { background: #f8f8f6; border: 1px solid #e0ded8; border-radius: 10px; padding: 14px 16px; }
+.card-label { font-size: 11px; font-weight: 500; color: #888; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.card-value { font-size: 22px; font-weight: 500; color: #1a1a18; line-height: 1.2; }
+.card-sub { font-size: 12px; color: #6b6a65; margin-top: 4px; line-height: 1.5; }
+
+.bullet-list { display: flex; flex-direction: column; gap: 8px; }
+.bullet { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #1a1a18; line-height: 1.6; }
+.dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+.dot-teal { background: #1D9E75; }
+.dot-purple { background: #7F77DD; }
+.dot-amber { background: #BA7517; }
+.dot-coral { background: #D85A30; }
+.dot-blue { background: #378ADD; }
+.dot-gray { background: #888780; }
+
+.persona-card { border-radius: 12px; border: 1px solid #e0ded8; overflow: hidden; }
+.persona-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.persona-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.icon-student { background: #EEEDFE; }
+.icon-user { background: #E1F5EE; }
+.icon-buyer { background: #FAEEDA; }
+.persona-name { font-size: 14px; font-weight: 500; color: #1a1a18; }
+.persona-desc { font-size: 11px; color: #6b6a65; margin-top: 1px; }
+.persona-body { padding: 12px 16px; background: #f8f8f6; display: flex; flex-direction: column; gap: 7px; }
+.persona-row { display: flex; gap: 8px; align-items: flex-start; }
+.persona-key { font-size: 10px; font-weight: 500; color: #888; min-width: 56px; padding-top: 2px; }
+.persona-val { font-size: 12px; color: #1a1a18; line-height: 1.5; }
+.ph-student { border-left: 3px solid #7F77DD; }
+.ph-user    { border-left: 3px solid #1D9E75; }
+.ph-buyer   { border-left: 3px solid #BA7517; }
+
+.goods-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.goods-table th { background: #f8f8f6; color: #6b6a65; font-weight: 500; font-size: 11px; padding: 8px 12px; text-align: left; border-bottom: 1px solid #e0ded8; }
+.goods-table td { padding: 9px 12px; border-bottom: 1px solid #e0ded8; color: #1a1a18; vertical-align: top; line-height: 1.5; }
+.goods-table tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 8px; }
+.b-high { background: #E1F5EE; color: #0F6E56; }
+.b-mid  { background: #FAEEDA; color: #854F0B; }
+.b-low  { background: #f1efe8; color: #5f5e5a; }
+
+.divider-label { font-size: 11px; font-weight: 500; color: #888; background: #f8f8f6; padding: 6px 32px; border-bottom: 1px solid #e0ded8; letter-spacing: 0.05em; }
+
+.note-box { margin-top: 12px; padding: 10px 14px; background: #f8f8f6; border-radius: 8px; font-size: 12px; color: #6b6a65; border: 1px solid #e0ded8; line-height: 1.6; }
+
+.step-row { display: flex; gap: 0; align-items: stretch; }
+.step { flex: 1; background: #f8f8f6; border: 1px solid #e0ded8; padding: 12px 14px; }
+.step:first-child { border-radius: 10px 0 0 10px; }
+.step:last-child { border-radius: 0 10px 10px 0; }
+.step + .step { border-left: none; }
+.step-label { font-size: 10px; color: #888; font-weight: 500; margin-bottom: 4px; }
+.step-title { font-size: 13px; font-weight: 500; color: #1a1a18; }
+.step-detail { font-size: 11px; color: #6b6a65; margin-top: 3px; line-height: 1.4; }
+
+.inline-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 1px 7px; border-radius: 8px; margin-right: 4px; }
+.it-teal { background: #E1F5EE; color: #0F6E56; }
+.it-purple { background: #EEEDFE; color: #3C3489; }
+.it-amber { background: #FAEEDA; color: #854F0B; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.kpi-card { background: #f8f8f6; border: 1px solid #e0ded8; border-radius: 10px; padding: 14px; text-align: center; }
+.kpi-phase { font-size: 10px; font-weight: 500; color: #888; margin-bottom: 6px; }
+.kpi-num { font-size: 20px; font-weight: 500; color: #1a1a18; }
+.kpi-unit { font-size: 11px; color: #6b6a65; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="divider-label">SECTION 1 ― はじめに</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 01</span>
+      <span class="slide-title">ココTプロジェクト　SNS戦略方針（案）</span>
+      <span class="tag tag-intro">表紙</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="col3">
+      <div class="card"><div class="card-label">目的</div><div class="card-value" style="font-size:14px;line-height:1.5">インターン大学生の確保<br>＋事業認知の拡大</div></div>
+      <div class="card"><div class="card-label">担当</div><div class="card-value" style="font-size:14px;line-height:1.5">かなうラボ<br>SNS戦略チーム</div></div>
+      <div class="card"><div class="card-label">期日</div><div class="card-value" style="font-size:14px;line-height:1.5">2025年3月24日<br>（中間報告）</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:#6b6a65;">※ 本資料は市場リサーチ → SNS戦略 → KPI設計の流れで構成されています</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 02</span>
+      <span class="slide-title">本日のアジェンダ</span>
+      <span class="tag tag-intro">構成</span>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-teal"></span><span><strong>① 市場リサーチ</strong> ― オリジナルTシャツ市場の規模・成長性、大学生のSNS利用実態</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><strong>② SNS戦略</strong> ― Instagram中心のコンセプト・投稿設計・ベンチマーク</span></div>
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>③ KPI・運用方針</strong> ― 目標数値・短期/長期タスク・改善サイクル</span></div>
+      <div class="bullet"><span class="dot dot-gray"></span><span><strong>④ 今後のステップ</strong> ― 次フェーズの確認事項・疑問点の整理</span></div>
+    </div>
+  </div>
+
+  <div class="divider-label">SECTION 2 ― 市場リサーチ</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 03</span>
+      <span class="slide-title">市場規模と成長性　＋　若年層トレンド</span>
+      <span class="tag tag-market">市場</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="col3" style="margin-bottom:14px;">
+      <div class="card"><div class="card-label">市場規模（国内推計）</div><div class="card-value">約4,000<span style="font-size:14px">億円</span></div><div class="card-sub">2021年時点</div></div>
+      <div class="card"><div class="card-label">CAGR（年平均成長率）</div><div class="card-value" style="color:#1D9E75">+12.81<span style="font-size:14px">%</span></div><div class="card-sub">2026〜2034年予測</div></div>
+      <div class="card"><div class="card-label">利益率（グッズ全般）</div><div class="card-value">30〜50<span style="font-size:14px">%</span></div><div class="card-sub">小ロット・在庫リスク低</div></div>
+    </div>
+    <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px;">若年層トレンド</div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-blue"></span><span><strong>ラブブ・ポップマート</strong>が店舗拡大中。ミニキャラ・アートトイへの若年層需要が急増</span></div>
+      <div class="bullet"><span class="dot dot-blue"></span><span><strong>推し活・アクスタ文化</strong>が定着。アクキー・缶バッジなど小物グッズの購買頻度が高い</span></div>
+      <div class="bullet"><span class="dot dot-blue"></span><span><strong>アート×ミニキャラの需要あり</strong>。叶うペンギンのようなオリジナルIPとの相性が良い</span></div>
+      <div class="bullet"><span class="dot dot-blue"></span><span>RUB-ENTERTAINMENTのオリジナルキャラぬいぐるみなど、<strong>感情に訴えるグッズ</strong>が若年層に刺さる傾向</span></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 04</span>
+      <span class="slide-title">大学生インターン参加実態（2026卒調査）</span>
+      <span class="tag tag-market">市場</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="col3" style="margin-bottom:12px;">
+      <div class="card"><div class="card-label">インターン参加経験率</div><div class="card-value" style="color:#1D9E75">85.6<span style="font-size:14px">%</span></div><div class="card-sub">マイナビ2026卒調査（n=1,043名）</div></div>
+      <div class="card"><div class="card-label">キャリア形成・最多スコア</div><div class="card-value">61〜70<span style="font-size:14px">点</span></div><div class="card-sub">「考えを深められた」が主な理由</div></div>
+      <div class="card"><div class="card-label">参加形式トレンド</div><div class="card-value" style="font-size:14px;line-height:1.5">WEB参加<br>年々増加</div><div class="card-sub">オンライン活用が主流化</div></div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>動機①</strong> 将来の不安を解消したい → 業界・職種への理解を深めるため</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>動機②</strong> ガクチカ・スキルを身につけたい → ESや面接での差別化を図るため</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>課題感</strong> 「面接が苦手」「ESに納得いかない」など選考対策への不安が残る</span></div>
+    </div>
+  </div>
+
+  <div class="divider-label">SECTION 3 ― ペルソナ設計</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 05</span>
+      <span class="slide-title">ターゲット別ペルソナ設計</span>
+      <span class="tag tag-persona">ペルソナ</span>
+      <span class="tag-new" style="margin-left:6px;">NEW</span>
+    </div>
+    <div class="accent-bar bar-coral"></div>
+    <div class="col3">
+      <div class="persona-card ph-student">
+        <div class="persona-header">
+          <div class="persona-icon icon-student">🎓</div>
+          <div><div class="persona-name">ペルソナ① 大学生</div><div class="persona-desc">インターン志望・就活準備層</div></div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-row"><span class="persona-key">年齢</span><span class="persona-val">20〜23歳、大学2〜4年生</span></div>
+          <div class="persona-row"><span class="persona-key">価値観</span><span class="persona-val">将来の不安を解消したい。ガクチカを作りたい</span></div>
+          <div class="persona-row"><span class="persona-key">行動</span><span class="persona-val">Instagram・TikTokで就活情報を収集</span></div>
+          <div class="persona-row"><span class="persona-key">SNS</span><span class="persona-val">Instagram・TikTok メイン</span></div>
+          <div class="persona-row"><span class="persona-key">訴求軸</span><span class="persona-val">「実績になる」「スキルが身につく」</span></div>
+        </div>
+      </div>
+      <div class="persona-card ph-user">
+        <div class="persona-header">
+          <div class="persona-icon icon-user">🎨</div>
+          <div><div class="persona-name">ペルソナ② 利用者さん</div><div class="persona-desc">福祉施設を利用するクリエイター</div></div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-row"><span class="persona-key">属性</span><span class="persona-val">障がいを持つ方。イラスト・デザインに興味・才能がある</span></div>
+          <div class="persona-row"><span class="persona-key">価値観</span><span class="persona-val">自分の作品が世に出てほしい。承認・達成感を求めている</span></div>
+          <div class="persona-row"><span class="persona-key">行動</span><span class="persona-val">ワークショップ参加。職員・インターン生と協働</span></div>
+          <div class="persona-row"><span class="persona-key">SNS</span><span class="persona-val">直接SNSは少ないが作品がSNSで紹介される</span></div>
+          <div class="persona-row"><span class="persona-key">訴求軸</span><span class="persona-val">「作品が商品になる」「誰かに届く喜び」</span></div>
+        </div>
+      </div>
+      <div class="persona-card ph-buyer">
+        <div class="persona-header">
+          <div class="persona-icon icon-buyer">🛍️</div>
+          <div><div class="persona-name">ペルソナ③ 一般購買層</div><div class="persona-desc">グッズ・推し活に関心のある若年層</div></div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-row"><span class="persona-key">年齢</span><span class="persona-val">18〜30歳。女性比率高め</span></div>
+          <div class="persona-row"><span class="persona-key">価値観</span><span class="persona-val">かわいい・独自性のあるグッズが好き。推し活文化に親しんでいる</span></div>
+          <div class="persona-row"><span class="persona-key">行動</span><span class="persona-val">InstagramでリサーチしてECで購入</span></div>
+          <div class="persona-row"><span class="persona-key">SNS</span><span class="persona-val">Instagram・X（旧Twitter）メイン</span></div>
+          <div class="persona-row"><span class="persona-key">訴求軸</span><span class="persona-val">「かわいいキャラ」「限定感・ストーリー性」</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="note-box">SNS発信の優先順位：<strong>①大学生向け</strong>（採用目的）→ <strong>③一般購買層</strong>（販売目的）→ ②利用者さんはコンテンツとして発信し認知・共感を獲得</div>
+  </div>
+
+  <div class="divider-label">SECTION 4 ― SNS戦略</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 06</span>
+      <span class="slide-title">SNS戦略の全体像</span>
+      <span class="tag tag-sns">SNS戦略</span>
+    </div>
+    <div class="accent-bar bar-purple"></div>
+    <div class="col2" style="margin-bottom:12px;">
+      <div class="card"><div class="card-label">メインチャネル</div><div class="card-value" style="font-size:15px">Instagram</div><div class="card-sub">ビジュアル訴求 × 大学生リーチに最適。Reels・ストーリーを積極活用</div></div>
+      <div class="card"><div class="card-label">基本コンセプト</div><div class="card-value" style="font-size:14px;line-height:1.5">「温かいものづくり」<br>× 福祉 × 大学生</div><div class="card-sub">ベンチマーク5件を参考に方向性を決定</div></div>
+    </div>
+    <div class="step-row">
+      <div class="step"><div class="step-label">PHASE 1</div><div class="step-title">模倣・学習期</div><div class="step-detail">ベンチマークアカウントを真似て投稿パターンを確立</div></div>
+      <div class="step"><div class="step-label">PHASE 2</div><div class="step-title">認知拡大期</div><div class="step-detail">Reels強化・ハッシュタグ戦略・UGC促進</div></div>
+      <div class="step"><div class="step-label">PHASE 3</div><div class="step-title">コミュニティ化</div><div class="step-detail">インターン生との共創・ワークショップ発信</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 07</span>
+      <span class="slide-title">投稿コンテンツ案（5パターン）</span>
+      <span class="tag tag-sns">SNS戦略</span>
+    </div>
+    <div class="accent-bar bar-purple"></div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-purple"></span><span><span class="inline-tag it-purple">共感</span><strong>インターン生の制作過程ストーリー</strong> ― 「こんなTシャツ作りました」など制作体験のリアルな記録。大学生目線で発信</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><span class="inline-tag it-teal">教育</span><strong>グッズ制作の裏側・ノウハウ</strong> ― 印刷方法の違いやデザインのコツなど。スキルアップに役立つコンテンツ</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><span class="inline-tag it-amber">エンタメ</span><strong>ビフォーアフター投稿</strong> ― イラストがTシャツになるまでの変化。Reels向け・拡散されやすい</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><span class="inline-tag it-teal">共感</span><strong>福祉×クリエイティブの紹介</strong> ― 利用者さんの作品・ワークショップの雰囲気。温かみのある写真・動画</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><span class="inline-tag it-amber">採用</span><strong>インターン募集・体験談投稿</strong> ― 「インターンで得たスキル・ガクチカ」。大学生の動機に直接訴求</span></div>
+    </div>
+    <div class="note-box">投稿頻度の目安：週3〜4回（フィード1〜2回 ＋ ストーリー毎日 ＋ Reels週1）</div>
+  </div>
+
+  <div class="divider-label">SECTION 5 ― KPI・運用方針</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 08</span>
+      <span class="slide-title">KPI目標設計</span>
+      <span class="tag tag-kpi">KPI</span>
+    </div>
+    <div class="accent-bar bar-amber"></div>
+    <div style="font-size:12px;color:#6b6a65;margin-bottom:10px;">※ 数値は開始後3ヶ月・6ヶ月・12ヶ月の目安（要調整）</div>
+    <div class="kpi-row" style="margin-bottom:12px;">
+      <div class="kpi-card"><div class="kpi-phase">3ヶ月後（短期）</div><div class="kpi-num">500+</div><div class="kpi-unit">フォロワー数</div><div class="kpi-unit" style="margin-top:4px;">エンゲージメント率 3%+</div></div>
+      <div class="kpi-card"><div class="kpi-phase">6ヶ月後（中期）</div><div class="kpi-num">1,500+</div><div class="kpi-unit">フォロワー数</div><div class="kpi-unit" style="margin-top:4px;">インターン問い合わせ 月3件+</div></div>
+      <div class="kpi-card"><div class="kpi-phase">12ヶ月後（長期）</div><div class="kpi-num">5,000+</div><div class="kpi-unit">フォロワー数</div><div class="kpi-unit" style="margin-top:4px;">売上前年比 110%+</div></div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>数字の見方</strong> ― エンゲージメント率（いいね＋コメント÷リーチ）を主指標に。フォロワーだけ追わない</span></div>
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>改善サイクル</strong> ― 月1回のPDCA：投稿ごとのデータを記録 → 伸びた投稿を分析 → 翌月の方針に反映</span></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 09</span>
+      <span class="slide-title">短期・長期タスクと運用方針</span>
+      <span class="tag tag-kpi">KPI</span>
+    </div>
+    <div class="accent-bar bar-amber"></div>
+    <div class="col2">
+      <div>
+        <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px;">SHORT TERM（〜3ヶ月）</div>
+        <div class="bullet-list">
+          <div class="bullet"><span class="dot dot-amber"></span><span>ベンチマーク5件の分析・模倣投稿スタート</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>アカウントプロフィール・ハイライト整備</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>週3〜4投稿ルーティンの定着</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>インターン募集投稿の定期発信</span></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px;">LONG TERM（3〜12ヶ月）</div>
+        <div class="bullet-list">
+          <div class="bullet"><span class="dot dot-teal"></span><span>インターン生との共創コンテンツ化</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>ワークショップ動画・Reels展開</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>グッズ販売の導線設計（リンクイン等）</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>ターゲット・ペルソナの精度向上</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-label">SECTION 6 ― グッズ展開</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 10</span>
+      <span class="slide-title">叶うペンギン　グッズ展開計画</span>
+      <span class="tag tag-goods">グッズ展開</span>
+      <span class="tag-new" style="margin-left:6px;">NEW</span>
+    </div>
+    <div class="accent-bar bar-blue"></div>
+    <div style="font-size:12px;color:#6b6a65;margin-bottom:12px;">若年層のミニキャラ需要・推し活文化を背景に、叶うペンギンをコンテンツIPとして展開する</div>
+    <table class="goods-table" style="margin-bottom:14px;">
+      <thead><tr><th>グッズ種別</th><th>優先度</th><th>根拠・特徴</th><th>参考サービス</th></tr></thead>
+      <tbody>
+        <tr><td><strong>アクリルスタンド（アクスタ）</strong></td><td><span class="badge b-high">最優先</span></td><td>推し活の定番。単価高め・利益率良好。ラブブ・ポップマートに近い世界観で訴求可能</td><td>ME-Q・アクリルの達人</td></tr>
+        <tr><td><strong>アクリルキーホルダー（アクキー）</strong></td><td><span class="badge b-high">最優先</span></td><td>小ロット・低コスト。SNSで映える。若年層女性に高需要</td><td>pixivFACTORY・ME-Q</td></tr>
+        <tr><td><strong>Tシャツ（ブランドコア）</strong></td><td><span class="badge b-high">最優先</span></td><td>ブランドの主力商品。利用者さんのイラストを使った限定デザインで差別化</td><td>Up-T・TMIX</td></tr>
+        <tr><td><strong>缶バッジ</strong></td><td><span class="badge b-mid">次フェーズ</span></td><td>低単価で購入ハードル低い。イベント・ワークショップでの配布にも活用可能</td><td>pixivFACTORY</td></tr>
+        <tr><td><strong>ぬいぐるみ・フィギュア系</strong></td><td><span class="badge b-low">検討</span></td><td>RUB-ENTERTAINMENTがオリジナルキャラぬいぐるみで成功。叶うペンギンとの相性良好だが高コスト</td><td>RUB-ENTERTAINMENT</td></tr>
+      </tbody>
+    </table>
+    <div class="step-row">
+      <div class="step"><div class="step-label">STEP 1（〜3ヶ月）</div><div class="step-title">アクキー・アクスタ</div><div class="step-detail">まず小ロットで試作・SNS発信</div></div>
+      <div class="step"><div class="step-label">STEP 2（〜6ヶ月）</div><div class="step-title">Tシャツ×ペンギン展開</div><div class="step-detail">利用者さんの絵を使った限定Tシャツ</div></div>
+      <div class="step"><div class="step-label">STEP 3（〜12ヶ月）</div><div class="step-title">缶バッジ・イベント展開</div><div class="step-detail">ワークショップ・イベントで配布・販売</div></div>
+      <div class="step"><div class="step-label">STEP 4（長期）</div><div class="step-title">ぬいぐるみ等検討</div><div class="step-detail">反響・資金状況次第で拡大</div></div>
+    </div>
+    <div class="note-box"><strong>差別化ポイント</strong>：叶うペンギンは「福祉×クリエイティブ×ストーリー」という背景を持つキャラクターIP。「買うことで誰かの仕事につながる」という価値訴求がポップマート等との差別化になる。</div>
+  </div>
+
+  <div class="divider-label">SECTION 7 ― 次のステップ</div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 11</span>
+      <span class="slide-title">確認事項・疑問点の整理</span>
+      <span class="tag tag-intro">課題</span>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ペルソナ設定の深度</strong> ― どこまで決めれば十分か？ 年齢・価値観・行動パターンまで設定するか</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ターゲット例</strong> ― 現状2案検討中。「将来の不安を解消したい大学生」vs「ガクチカ・スキル習得目的の大学生」</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ベンチマーク5件の選定</strong> ― どのアカウントを参考にするか確認が必要</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>KPI数値の妥当性</strong> ― 初期フォロワー0からのスタートを前提に数値を見直すか</span></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 12</span>
+      <span class="slide-title">今後のステップ</span>
+      <span class="tag tag-intro">まとめ</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="step-row">
+      <div class="step"><div class="step-label">STEP 1　完了</div><div class="step-title">市場リサーチ</div><div class="step-detail">市場規模・大学生実態の把握</div></div>
+      <div class="step"><div class="step-label">STEP 2　進行中</div><div class="step-title">戦略設計</div><div class="step-detail">SNS方針・ターゲット確定</div></div>
+      <div class="step"><div class="step-label">STEP 3　次フェーズ</div><div class="step-title">施策実行</div><div class="step-detail">投稿開始・運用ルーティン定着</div></div>
+      <div class="step"><div class="step-label">STEP 4</div><div class="step-title">改善・拡大</div><div class="step-detail">PDCA・コミュニティ化</div></div>
+    </div>
+    <div class="note-box" style="margin-top:16px;"><strong>ファーストステップ</strong>：他のSNSアカウントを真似ることから始める。まずベンチマーク5件を選定し、投稿パターンを研究・模倣することで早期に運用リズムをつくる。</div>
+  </div>
+
+</div>
+</body>
+</html>
