@@ -1,0 +1,228 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.slide { padding: 28px 32px; }
+.slide-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.slide-num { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: 20px; padding: 2px 10px; white-space: nowrap; }
+.slide-title { font-size: 17px; font-weight: 500; color: var(--color-text-primary); }
+.tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; margin-left: auto; white-space: nowrap; }
+.tag-blue { background: #E6F1FB; color: #185FA5; }
+.tag-new { background: #F7C1C1; color: #A32D2D; }
+.accent-bar { height: 3px; border-radius: 2px; margin-bottom: 18px; background: linear-gradient(90deg, #185FA5, #378ADD); }
+
+.col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.col3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+.card { background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: 10px; padding: 14px 16px; }
+.card-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 6px; letter-spacing: 0.04em; }
+.card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.card-body { font-size: 12px; color: var(--color-text-secondary); line-height: 1.7; }
+
+.ref-card { border-radius: 10px; border: 1px solid var(--color-border-tertiary); overflow: hidden; }
+.ref-header { padding: 10px 14px; background: var(--color-background-secondary); border-bottom: 1px solid var(--color-border-tertiary); }
+.ref-header-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.ref-header-sub { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+.ref-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 7px; }
+.ref-row { display: flex; gap: 8px; align-items: flex-start; }
+.ref-key { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); min-width: 70px; padding-top: 1px; flex-shrink: 0; }
+.ref-val { font-size: 12px; color: var(--color-text-primary); line-height: 1.5; }
+
+.level-card { border-radius: 10px; border: 1px solid var(--color-border-tertiary); overflow: hidden; }
+.level-head { padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; }
+.level-name { font-size: 13px; font-weight: 500; }
+.level-badge { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 8px; }
+.lh-init { background: #EEEDFE; }
+.ln-init { color: #3C3489; }
+.lb-init { background: #CECBF6; color: #3C3489; }
+.lh-mid { background: #E1F5EE; }
+.ln-mid { color: #0F6E56; }
+.lb-mid { background: #9FE1CB; color: #0F6E56; }
+.lh-adv { background: #FAEEDA; }
+.ln-adv { color: #854F0B; }
+.lb-adv { background: #FAC775; color: #633806; }
+
+.level-body { padding: 10px 14px; background: var(--color-background-secondary); }
+.level-item { font-size: 12px; color: var(--color-text-primary); line-height: 1.8; }
+.level-item::before { content: "・"; color: var(--color-text-tertiary); }
+
+.two-col-insight { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.insight-box { border-radius: 10px; padding: 14px 16px; border: 1px solid var(--color-border-tertiary); }
+.insight-label { font-size: 11px; font-weight: 500; margin-bottom: 8px; }
+.il-b { color: #185FA5; }
+.il-t { color: #0F6E56; }
+.ib-b { background: #E6F1FB; }
+.ib-t { background: #E1F5EE; }
+.insight-item { font-size: 12px; color: var(--color-text-primary); line-height: 1.8; }
+.insight-item::before { content: "✓　"; color: var(--color-text-tertiary); font-size: 11px; }
+
+.note { margin-top: 14px; padding: 12px 16px; background: var(--color-background-secondary); border-radius: 8px; border: 1px solid var(--color-border-tertiary); font-size: 12px; color: var(--color-text-secondary); line-height: 1.7; }
+.note strong { color: var(--color-text-primary); font-weight: 500; }
+
+.goods-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 14px; }
+.goods-table th { background: var(--color-background-secondary); color: var(--color-text-secondary); font-weight: 500; font-size: 11px; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--color-border-tertiary); }
+.goods-table td { padding: 9px 12px; border-bottom: 1px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: top; line-height: 1.5; }
+.goods-table tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 8px; }
+.b-o { background: #E1F5EE; color: #0F6E56; }
+.b-m { background: #FAEEDA; color: #854F0B; }
+
+.divider { border: none; border-top: 1px solid var(--color-border-tertiary); margin: 0; }
+</style>
+
+<div>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 新規</span>
+      <span class="slide-title">B型就労支援 × 商品品質　両立の仕組み</span>
+      <span class="tag tag-blue">事業設計</span>
+      <span class="tag tag-new" style="margin-left:6px;">NEW</span>
+    </div>
+    <div class="accent-bar"></div>
+
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:10px;letter-spacing:0.04em;">解くべき2つの要件</div>
+    <div class="col2" style="margin-bottom:18px;">
+      <div class="insight-box ib-b">
+        <div class="insight-label il-b">就労支援B型として</div>
+        <div class="insight-item">利用者さんが「作業した」記録が取れる</div>
+        <div class="insight-item">工程ごとに作業ログとして計上できる</div>
+        <div class="insight-item">難易度別に誰でも参加できる設計</div>
+      </div>
+      <div class="insight-box ib-t">
+        <div class="insight-label il-t">商品として</div>
+        <div class="insight-item">一般市場で通用するクオリティ</div>
+        <div class="insight-item">「障がい者が作った」ではなく「良い作品」として届ける</div>
+        <div class="insight-item">品質のばらつきをゼロにする仕組み</div>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:10px;letter-spacing:0.04em;">答え：2層構造で両立させる</div>
+    <div class="col2">
+      <div class="card">
+        <div class="card-label">第1層　利用者さんの作業</div>
+        <div class="card-title">イラスト・素材の創出</div>
+        <div class="card-body">絵を描く・スタンプ・スキャン・シール貼りなど、難易度に合わせた工程を担当。<strong>工程単位で作業記録</strong>を残し、就労実績として計上する。</div>
+      </div>
+      <div class="card">
+        <div class="card-label">第2層　職員・インターン生の仕上げ</div>
+        <div class="card-title">データ化・品質保証・入稿</div>
+        <div class="card-body">トレース・データ補正・印刷入稿など最終工程を担当。HININE NOTE型の<strong>標準化された手順</strong>で品質のばらつきをなくす。</div>
+      </div>
+    </div>
+    <div class="note">
+      <strong>ポイント</strong>：利用者さんが作業した「素材・原画」が商品の核心。職員・インターンはそれを「市場に出せる品質」に仕上げる役割。工程を分けることで、両方の要件が同時に成立する。
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 新規</span>
+      <span class="slide-title">利用者さんが担える作業　難易度別設計</span>
+      <span class="tag tag-blue">作業設計</span>
+    </div>
+    <div class="accent-bar"></div>
+    <div class="col3" style="margin-bottom:14px;">
+
+      <div class="level-card">
+        <div class="level-head lh-init">
+          <span class="level-name ln-init">初級</span>
+          <span class="level-badge lb-init">誰でも参加可</span>
+        </div>
+        <div class="level-body">
+          <div class="level-item">紙にイラスト・落書きを描く</div>
+          <div class="level-item">スタンプ・押印作業</div>
+          <div class="level-item">シール貼り・袋詰め・梱包</div>
+          <div class="level-item">商品タグの手書き記入</div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-head lh-mid">
+          <span class="level-name ln-mid">中級</span>
+          <span class="level-badge lb-mid">練習で習得可</span>
+        </div>
+        <div class="level-body">
+          <div class="level-item">タブレットで色塗り・着彩</div>
+          <div class="level-item">スキャン・ファイル保存作業</div>
+          <div class="level-item">アクスタのカットライン確認</div>
+          <div class="level-item">プレス・熱転写作業補助</div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-head lh-adv">
+          <span class="level-name ln-adv">上級</span>
+          <span class="level-badge lb-adv">インターン生と協働</span>
+        </div>
+        <div class="level-body">
+          <div class="level-item">Procreate・Illustratorで描画</div>
+          <div class="level-item">印刷データの簡易チェック</div>
+          <div class="level-item">SNS用画像の編集補助</div>
+          <div class="level-item">商品写真撮影・小道具配置</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="note">
+      <strong>HININE NOTE・マイフェイバリ型の設計思想</strong>：「誰がやっても同じ品質になる手順」を作ることが核心。コラージュ＋プレス（HININE NOTE）、ワッペン縫製補助（マイフェイバリ）のように、工程を細かく分解して標準化することで、技術に差があっても完成品の品質が担保される。
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 新規</span>
+      <span class="slide-title">グッズ別　作業分担と品質担保の設計</span>
+      <span class="tag tag-blue">グッズ設計</span>
+    </div>
+    <div class="accent-bar"></div>
+    <table class="goods-table">
+      <thead>
+        <tr>
+          <th>グッズ</th>
+          <th>利用者さんの担当工程</th>
+          <th>職員・インターンの担当</th>
+          <th>品質担保の方法</th>
+          <th>参考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>アクキー・アクスタ</strong></td>
+          <td>原画イラストを紙／タブレットで描く。カットライン確認補助</td>
+          <td>Illustratorでトレース・データ入稿。ME-Q等に発注</td>
+          <td>入稿前チェックリストで品質統一。アクリルの達人等プロ品質の外注先を活用</td>
+          <td><span class="badge b-o">最優先</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tシャツ</strong></td>
+          <td>デザイン原画の制作。色の選択・組み合わせ</td>
+          <td>デジタルデータ化・配色調整・印刷入稿（Up-T等）</td>
+          <td>カラープロファイル統一。試作1枚で確認後に量産</td>
+          <td><span class="badge b-o">最優先</span></td>
+        </tr>
+        <tr>
+          <td><strong>コラージュ系ノート・雑貨</strong></td>
+          <td>素材の切り貼り・コラージュ作業。プレス補助</td>
+          <td>完成品チェック・袋詰め・販売管理</td>
+          <td>HININE NOTE型：手順書を標準化し誰でも同じ仕上がりに</td>
+          <td><span class="badge b-m">次フェーズ</span></td>
+        </tr>
+        <tr>
+          <td><strong>ワッペン（マイフェイバリ型）</strong></td>
+          <td>デザイン原画制作。ワッペンの配置確認</td>
+          <td>デジタルデータ入稿・縫製発注。品質チェック</td>
+          <td>縫製は外注で品質担保。配置・デザインのみ利用者担当</td>
+          <td><span class="badge b-m">次フェーズ</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <strong>重要な考え方</strong>：利用者さんが担う工程は「素材・デザインの創出」に集中させ、機械・技術的な品質保証の工程はツール（外注・デジタル処理）で解決する。これにより、作業の達成感と商品品質を同時に担保できる。
+    </div>
+  </div>
+
+</div>

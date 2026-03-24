@@ -1,0 +1,520 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.deck { display: flex; flex-direction: column; gap: 0; }
+
+.slide {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--color-border-tertiary);
+  position: relative;
+}
+.slide:last-child { border-bottom: none; }
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.slide-num {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: 20px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.slide-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.tag-market { background: #E1F5EE; color: #0F6E56; }
+.tag-sns { background: #EEEDFE; color: #3C3489; }
+.tag-kpi { background: #FAEEDA; color: #854F0B; }
+.tag-intro { background: #EAF3DE; color: #3B6D11; }
+.tag-target { background: #FAECE7; color: #993C1D; }
+
+.content-grid {
+  display: grid;
+  gap: 10px;
+}
+.col2 { grid-template-columns: 1fr 1fr; }
+.col3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.card {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.card-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.card-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+.card-sub {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bullet {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.dot-teal { background: #1D9E75; }
+.dot-purple { background: #7F77DD; }
+.dot-amber { background: #BA7517; }
+.dot-coral { background: #D85A30; }
+.dot-blue { background: #378ADD; }
+.dot-gray { background: #888780; }
+
+.accent-bar {
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.bar-teal { background: linear-gradient(90deg, #1D9E75, #5DCAA5); }
+.bar-purple { background: linear-gradient(90deg, #7F77DD, #AFA9EC); }
+.bar-amber { background: linear-gradient(90deg, #BA7517, #EF9F27); }
+.bar-coral { background: linear-gradient(90deg, #D85A30, #F0997B); }
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.kpi-card {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+.kpi-phase {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  margin-bottom: 6px;
+}
+.kpi-num {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.kpi-unit {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.step-row {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+}
+.step {
+  flex: 1;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: 0;
+  padding: 12px 14px;
+  position: relative;
+}
+.step:first-child { border-radius: 10px 0 0 10px; }
+.step:last-child { border-radius: 0 10px 10px 0; }
+.step + .step { border-left: none; }
+.step-label { font-size: 10px; color: var(--color-text-tertiary); font-weight: 500; margin-bottom: 4px; }
+.step-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.step-detail { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.4; }
+
+.divider-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  background: var(--color-background-primary);
+  padding: 6px 16px;
+  border-bottom: 1px solid var(--color-border-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.inline-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 1px 7px;
+  border-radius: 8px;
+  margin-right: 4px;
+}
+.it-teal { background: #E1F5EE; color: #0F6E56; }
+.it-purple { background: #EEEDFE; color: #3C3489; }
+.it-amber { background: #FAEEDA; color: #854F0B; }
+</style>
+
+<div class="deck">
+
+  <!-- 区切り -->
+  <div class="divider-label">SECTION 1 ― はじめに</div>
+
+  <!-- Slide 1: 表紙 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 01</span>
+      <span class="slide-title">ココTプロジェクト　SNS戦略方針（案）</span>
+      <span class="tag tag-intro">表紙</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="content-grid col3">
+      <div class="card">
+        <div class="card-label">目的</div>
+        <div class="card-value" style="font-size:14px;line-height:1.5">インターン大学生の確保<br>＋事業認知の拡大</div>
+      </div>
+      <div class="card">
+        <div class="card-label">担当</div>
+        <div class="card-value" style="font-size:14px;line-height:1.5">かなうラボ<br>SNS戦略チーム</div>
+      </div>
+      <div class="card">
+        <div class="card-label">期日</div>
+        <div class="card-value" style="font-size:14px;line-height:1.5">2025年3月24日<br>（中間報告）</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; font-size:12px; color:var(--color-text-secondary);">
+      ※ 本資料は市場リサーチ → SNS戦略 → KPI設計の流れで構成されています
+    </div>
+  </div>
+
+  <!-- Slide 2: アジェンダ -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 02</span>
+      <span class="slide-title">本日のアジェンダ</span>
+      <span class="tag tag-intro">構成</span>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-teal"></span><span><strong>① 市場リサーチ</strong> ― オリジナルTシャツ市場の規模・成長性、大学生のSNS利用実態</span></div>
+      <div class="bullet"><span class="dot dot-purple"></span><span><strong>② SNS戦略</strong> ― Instagram中心のコンセプト・投稿設計・ベンチマーク</span></div>
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>③ KPI・運用方針</strong> ― 目標数値・短期/長期タスク・改善サイクル</span></div>
+      <div class="bullet"><span class="dot dot-gray"></span><span><strong>④ 今後のステップ</strong> ― 次フェーズの確認事項・疑問点の整理</span></div>
+    </div>
+  </div>
+
+  <!-- 区切り -->
+  <div class="divider-label">SECTION 2 ― 市場リサーチ</div>
+
+  <!-- Slide 3: 市場規模 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 03</span>
+      <span class="slide-title">市場規模と成長性</span>
+      <span class="tag tag-market">市場</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="content-grid col3" style="margin-bottom:12px;">
+      <div class="card">
+        <div class="card-label">オリジナルTシャツ市場（推計）</div>
+        <div class="card-value">約4,000<span style="font-size:14px">億円</span></div>
+        <div class="card-sub">国内推計（2021年時点）</div>
+      </div>
+      <div class="card">
+        <div class="card-label">市場CAGR（年平均成長率）</div>
+        <div class="card-value" style="color:#1D9E75">+12.81<span style="font-size:14px">%</span></div>
+        <div class="card-sub">2026〜2034年予測。非常に高い成長率</div>
+      </div>
+      <div class="card">
+        <div class="card-label">一般的な利益率</div>
+        <div class="card-value">30〜50<span style="font-size:14px">%</span></div>
+        <div class="card-sub">オリジナルグッズ。小ロット・在庫リスク低</div>
+      </div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-teal"></span><span>推し活・キャラクター市場の拡大により、オンデマンド受注生産の需要が継続的に増加</span></div>
+      <div class="bullet"><span class="dot dot-teal"></span><span>デジタルプリント技術の向上とクリエイターエコノミーの拡大が追い風</span></div>
+      <div class="bullet"><span class="dot dot-teal"></span><span>1枚から作成可能なサービスが主流 → 大量在庫リスクの低いビジネスモデル</span></div>
+    </div>
+  </div>
+
+  <!-- Slide 4: 大学生インターン実態 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 04</span>
+      <span class="slide-title">大学生インターン参加実態（2026卒調査）</span>
+      <span class="tag tag-market">市場</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="content-grid col3" style="margin-bottom:12px;">
+      <div class="card">
+        <div class="card-label">インターン参加経験率</div>
+        <div class="card-value" style="color:#1D9E75">85.6<span style="font-size:14px">%</span></div>
+        <div class="card-sub">マイナビ2026卒調査（n=1,043名）</div>
+      </div>
+      <div class="card">
+        <div class="card-label">キャリア形成・最多スコア</div>
+        <div class="card-value">61〜70<span style="font-size:14px">点</span></div>
+        <div class="card-sub">「考えを深められた」が主な理由</div>
+      </div>
+      <div class="card">
+        <div class="card-label">参加形式トレンド</div>
+        <div class="card-value" style="font-size:14px;line-height:1.5">WEB参加<br>年々増加</div>
+        <div class="card-sub">オンライン活用が主流化</div>
+      </div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>動機①</strong> 将来の不安を解消したい → 業界・職種への理解を深めるため</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>動機②</strong> ガクチカ・スキルを身につけたい → ESや面接での差別化を図るため</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>課題感</strong> 「面接が苦手」「ESに納得いかない」など選考対策への不安が残る</span></div>
+    </div>
+  </div>
+
+  <!-- 区切り -->
+  <div class="divider-label">SECTION 3 ― SNS戦略</div>
+
+  <!-- Slide 5: SNS戦略全体像 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 05</span>
+      <span class="slide-title">SNS戦略の全体像</span>
+      <span class="tag tag-sns">SNS戦略</span>
+    </div>
+    <div class="accent-bar bar-purple"></div>
+    <div class="content-grid col2" style="margin-bottom:12px;">
+      <div class="card">
+        <div class="card-label">メインチャネル</div>
+        <div class="card-value" style="font-size:15px">Instagram</div>
+        <div class="card-sub">ビジュアル訴求 × 大学生リーチに最適。Reels・ストーリーを積極活用</div>
+      </div>
+      <div class="card">
+        <div class="card-label">基本コンセプト</div>
+        <div class="card-value" style="font-size:14px;line-height:1.5">「温かいものづくり」<br>× 福祉 × 大学生</div>
+        <div class="card-sub">ベンチマーク5件を参考に方向性を決定</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step">
+        <div class="step-label">PHASE 1</div>
+        <div class="step-title">模倣・学習期</div>
+        <div class="step-detail">ベンチマークアカウントを真似て投稿パターンを確立</div>
+      </div>
+      <div class="step">
+        <div class="step-label">PHASE 2</div>
+        <div class="step-title">認知拡大期</div>
+        <div class="step-detail">Reels強化・ハッシュタグ戦略・UGC促進</div>
+      </div>
+      <div class="step">
+        <div class="step-label">PHASE 3</div>
+        <div class="step-title">コミュニティ化</div>
+        <div class="step-detail">インターン生との共創・ワークショップ発信</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: 投稿コンテンツ設計 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 06</span>
+      <span class="slide-title">投稿コンテンツ案（5パターン）</span>
+      <span class="tag tag-sns">SNS戦略</span>
+    </div>
+    <div class="accent-bar bar-purple"></div>
+    <div class="bullet-list">
+      <div class="bullet">
+        <span class="dot dot-purple"></span>
+        <span>
+          <span class="inline-tag it-purple">共感</span>
+          <strong>インターン生の制作過程ストーリー</strong> ― 「こんなTシャツ作りました」など制作体験のリアルな記録。大学生目線で発信
+        </span>
+      </div>
+      <div class="bullet">
+        <span class="dot dot-purple"></span>
+        <span>
+          <span class="inline-tag it-teal">教育</span>
+          <strong>グッズ制作の裏側・ノウハウ</strong> ― 印刷方法の違いやデザインのコツなど。スキルアップに役立つコンテンツ
+        </span>
+      </div>
+      <div class="bullet">
+        <span class="dot dot-purple"></span>
+        <span>
+          <span class="inline-tag it-amber">エンタメ</span>
+          <strong>ビフォーアフター投稿</strong> ― イラストがTシャツになるまでの変化。Reels向け・拡散されやすい
+        </span>
+      </div>
+      <div class="bullet">
+        <span class="dot dot-purple"></span>
+        <span>
+          <span class="inline-tag it-teal">共感</span>
+          <strong>福祉×クリエイティブの紹介</strong> ― 利用者さんの作品・ワークショップの雰囲気。温かみのある写真・動画
+        </span>
+      </div>
+      <div class="bullet">
+        <span class="dot dot-purple"></span>
+        <span>
+          <span class="inline-tag it-amber">採用</span>
+          <strong>インターン募集・体験談投稿</strong> ― 「インターンで得たスキル・ガクチカ」。大学生の動機に直接訴求
+        </span>
+      </div>
+    </div>
+    <div style="margin-top:12px; padding:10px 14px; background:var(--color-background-secondary); border-radius:8px; font-size:12px; color:var(--color-text-secondary); border:1px solid var(--color-border-tertiary);">
+      投稿頻度の目安：週3〜4回（フィード1〜2回 ＋ ストーリー毎日 ＋ Reels週1）
+    </div>
+  </div>
+
+  <!-- 区切り -->
+  <div class="divider-label">SECTION 4 ― KPI・運用方針</div>
+
+  <!-- Slide 7: KPI設計 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 07</span>
+      <span class="slide-title">KPI目標設計</span>
+      <span class="tag tag-kpi">KPI</span>
+    </div>
+    <div class="accent-bar bar-amber"></div>
+    <div style="font-size:12px; color:var(--color-text-secondary); margin-bottom:10px;">※ 数値は開始後3ヶ月・6ヶ月・12ヶ月の目安（要調整）</div>
+    <div class="kpi-row" style="margin-bottom:12px;">
+      <div class="kpi-card">
+        <div class="kpi-phase">3ヶ月後（短期）</div>
+        <div class="kpi-num">500+</div>
+        <div class="kpi-unit">フォロワー数</div>
+        <div class="kpi-unit" style="margin-top:4px;">エンゲージメント率 3%+</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-phase">6ヶ月後（中期）</div>
+        <div class="kpi-num">1,500+</div>
+        <div class="kpi-unit">フォロワー数</div>
+        <div class="kpi-unit" style="margin-top:4px;">インターン問い合わせ 月3件+</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-phase">12ヶ月後（長期）</div>
+        <div class="kpi-num">5,000+</div>
+        <div class="kpi-unit">フォロワー数</div>
+        <div class="kpi-unit" style="margin-top:4px;">売上前年比 110%+</div>
+      </div>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>数字の見方</strong> ― エンゲージメント率（いいね＋コメント÷リーチ）を主指標に。フォロワーだけ追わない</span></div>
+      <div class="bullet"><span class="dot dot-amber"></span><span><strong>改善サイクル</strong> ― 月1回のPDCA：投稿ごとのデータを記録 → 伸びた投稿を分析 → 翌月の方針に反映</span></div>
+    </div>
+  </div>
+
+  <!-- Slide 8: 短期・長期タスク -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 08</span>
+      <span class="slide-title">短期・長期タスクと運用方針</span>
+      <span class="tag tag-kpi">KPI</span>
+    </div>
+    <div class="accent-bar bar-amber"></div>
+    <div class="content-grid col2">
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:8px;">SHORT TERM（〜3ヶ月）</div>
+        <div class="bullet-list">
+          <div class="bullet"><span class="dot dot-amber"></span><span>ベンチマーク5件の分析・模倣投稿スタート</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>アカウントプロフィール・ハイライト整備</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>週3〜4投稿ルーティンの定着</span></div>
+          <div class="bullet"><span class="dot dot-amber"></span><span>インターン募集投稿の定期発信</span></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:8px;">LONG TERM（3〜12ヶ月）</div>
+        <div class="bullet-list">
+          <div class="bullet"><span class="dot dot-teal"></span><span>インターン生との共創コンテンツ化</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>ワークショップ動画・Reels展開</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>グッズ販売の導線設計（リンクイン等）</span></div>
+          <div class="bullet"><span class="dot dot-teal"></span><span>ターゲット・ペルソナの精度向上</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区切り -->
+  <div class="divider-label">SECTION 5 ― 次のステップ</div>
+
+  <!-- Slide 9: 確認事項・疑問点 -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 09</span>
+      <span class="slide-title">確認事項・疑問点の整理</span>
+      <span class="tag tag-intro">課題</span>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ペルソナ設定の深度</strong> ― どこまで決めれば十分か？ 年齢・価値観・行動パターンまで設定するか</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ターゲット例</strong> ― 現状2案検討中。「将来の不安を解消したい大学生」vs「ガクチカ・スキル習得目的の大学生」</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>ベンチマーク5件の選定</strong> ― どのアカウントを参考にするか確認が必要</span></div>
+      <div class="bullet"><span class="dot dot-coral"></span><span><strong>KPI数値の妥当性</strong> ― 初期フォロワー0からのスタートを前提に数値を見直すか</span></div>
+    </div>
+  </div>
+
+  <!-- Slide 10: 今後のスケジュール -->
+  <div class="slide">
+    <div class="slide-header">
+      <span class="slide-num">SLIDE 10</span>
+      <span class="slide-title">今後のステップ</span>
+      <span class="tag tag-intro">まとめ</span>
+    </div>
+    <div class="accent-bar bar-teal"></div>
+    <div class="step-row">
+      <div class="step">
+        <div class="step-label">STEP 1　完了</div>
+        <div class="step-title">市場リサーチ</div>
+        <div class="step-detail">市場規模・大学生実態の把握</div>
+      </div>
+      <div class="step">
+        <div class="step-label">STEP 2　進行中</div>
+        <div class="step-title">戦略設計</div>
+        <div class="step-detail">SNS方針・ターゲット確定</div>
+      </div>
+      <div class="step">
+        <div class="step-label">STEP 3　次フェーズ</div>
+        <div class="step-title">施策実行</div>
+        <div class="step-detail">投稿開始・運用ルーティン定着</div>
+      </div>
+      <div class="step">
+        <div class="step-label">STEP 4</div>
+        <div class="step-title">改善・拡大</div>
+        <div class="step-detail">PDCA・コミュニティ化</div>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:12px 16px; background:var(--color-background-secondary); border-radius:8px; border:1px solid var(--color-border-tertiary); font-size:13px; color:var(--color-text-primary); line-height:1.7;">
+      <strong>ファーストステップ</strong>：他のSNSアカウントを真似ることから始める。まずベンチマーク5件を選定し、投稿パターンを研究・模倣することで早期に運用リズムをつくる。
+    </div>
+  </div>
+
+</div>
